@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @question = Question.new({user: current_user}.merge!(question_params))
+    @question = Question.new(question_params.merge!({user: current_user}))
     @question.save
     respond_with(@question)
   end
@@ -43,6 +43,6 @@ class QuestionsController < ApplicationController
     end
 
     def question_params
-      params[:question]
+      params.require(:question).permit :title, :content
     end
 end
