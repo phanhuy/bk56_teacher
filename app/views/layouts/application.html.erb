@@ -7,7 +7,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<%= link_to "sing_in", new_user_session_path %><br>
+<%= link_to "sing_out", destroy_user_session_path, method: :delete %><br>
 <%= yield %>
 
 </body>
